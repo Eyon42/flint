@@ -1,0 +1,51 @@
+{
+  "name": "flint",
+  "version": "0.1.0",
+  "description": "Pluggable linter with an engine built for AI-assisted analysis",
+  "type": "module",
+  "license": "MIT",
+  "bin": {
+    "flint": "dist/index.js"
+  },
+  "exports": {
+    "./config": {
+      "types": "./dist/config.d.ts",
+      "import": "./dist/config.js"
+    },
+    "./ai": {
+      "types": "./dist/ai.d.ts",
+      "import": "./dist/ai.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "packageManager": "pnpm@11.2.1",
+  "scripts": {
+    "dev": "tsx src/index.ts",
+    "lint": "oxlint",
+    "lint:ai": "tsx src/index.ts lint",
+    "build": "tsup && tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "prepare": "pnpm build"
+  },
+  "dependencies": {
+    "commander": "^15.0.0",
+    "flint": "link:",
+    "ignore": "^7.0.9",
+    "jiti": "^2.7.0",
+    "tinyglobby": "^0.2.17"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.1",
+    "oxlint": "^1.83.0",
+    "tsup": "^8.5.1",
+    "tsx": "^4.23.13",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.1"
+  }
+}
